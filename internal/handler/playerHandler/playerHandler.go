@@ -1,5 +1,10 @@
 package playerhandler
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+)
 
-func PlayerHandler(w http.ResponseWriter, r *http.Request) {}
+func PlayerHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprint(w, "20")
+}
