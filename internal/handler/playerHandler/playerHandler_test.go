@@ -8,10 +8,10 @@ import (
 
 func TestPlayerHandler(t *testing.T) {
 	t.Run("returns Pepper's score", func(t *testing.T) {
-		request, _ := http.NewRequest(http.MethodGet, "/players/Pepper", nil)
+		request, _ := http.NewRequest(http.MethodGet, "/api/players/Pepper", nil)
 		response := httptest.NewRecorder()
 
-		PlayerHandler(response, request)
+		NewPlayerHandler().ServeHTTP(response, request)
 
 		got := response.Body.String()
 		want := "20"
@@ -21,10 +21,10 @@ func TestPlayerHandler(t *testing.T) {
 		}
 	})
 	t.Run("returns Floyd's score", func(t *testing.T) {
-		request, _ := http.NewRequest(http.MethodGet, "/players/Floyd", nil)
+		request, _ := http.NewRequest(http.MethodGet, "/api/players/Floyd", nil)
 		response := httptest.NewRecorder()
 
-		PlayerHandler(response, request)
+		NewPlayerHandler().ServeHTTP(response, request)
 
 		got := response.Body.String()
 		want := "10"

@@ -7,8 +7,6 @@ import (
 )
 
 func main() {
-	// Hello world, the web server
-
-	http.HandleFunc("/api/players", playerhandler.PlayerHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	mux := playerhandler.NewPlayerHandler()
+	log.Fatal(http.ListenAndServe(":8080", mux))
 }
