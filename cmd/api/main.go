@@ -1,18 +1,14 @@
 package main
 
 import (
-	"io"
 	"log"
+	playerhandler "mypractice/httpserver/internal/handler/playerHandler"
 	"net/http"
 )
 
 func main() {
 	// Hello world, the web server
 
-	helloHandler := func(w http.ResponseWriter, req *http.Request) {
-		io.WriteString(w, "Hello, world!\n")
-	}
-
-	http.HandleFunc("/hello", helloHandler)
+	http.HandleFunc("/api/players", playerhandler.PlayerHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
